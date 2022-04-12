@@ -18,7 +18,13 @@ Citizen.CreateThread(function ()
       if cinematic ~= curCinematic then
         DisplayRadar(false)
         curCinematic = cinematic
-      elseif not cfg.persistentRadar and not cinematic then
+      end
+                
+      if cfg.persistentRadar and not cinematic then
+          DisplayRadar(true)
+      end
+      
+      if not cfg.persistentRadar and not cinematic then
         local isRadarHidden = IsRadarHidden()
         if inVehicle == isRadarHidden then
           DisplayRadar(inVehicle)
